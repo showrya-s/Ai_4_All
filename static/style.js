@@ -1,5 +1,7 @@
-// Improved chat handling for both Learning and Gaming AI
-async function handleChat(formId, inputId, chatId, apiEndpoint) {
+// Puter.js integration for Learning & Gaming AI chats
+// Make sure you included <script src="https://js.puter.com/puter.js"></script> in base.html
+
+async function handleChat(formId, inputId, chatId, aiMode) {
   const form = document.getElementById(formId);
   const input = document.getElementById(inputId);
   const chat = document.getElementById(chatId);
@@ -16,37 +18,22 @@ async function handleChat(formId, inputId, chatId, apiEndpoint) {
     input.value = "";
 
     try {
-      const res = await fetch(apiEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
+      // Call Puter AI directly
+      const response = await puter.ai.chat(msg, {
+        model: "gpt-4o-mini", // you can also try "gpt-4o" or "codex"
+        systemPrompt: aiMode === "learning"
+          ? "You are an expert academic tutor and coding mentor. Explain formulas, solve homework step-by-step, and teach coding clearly."
+          : "You are a gaming coach AI. Explain strategies, walkthroughs, and tips in a fun, gamer-friendly way."
       });
 
-      if (!res.ok) {
-        // If backend returns error status
-        const errText = await res.text();
-        chat.innerHTML += `<div style="color:red;">⚠️ Server error: ${errText}</div>`;
-        return;
-      }
-
-      const data = await res.json();
-
-      // Show AI reply or error
-      if (data.reply) {
-        chat.innerHTML += `<div style="color:#00ff88;">🤖 ${data.reply}</div>`;
-      } else if (data.error) {
-        chat.innerHTML += `<div style="color:red;">⚠️ AI error: ${data.error}</div>`;
-      } else {
-        chat.innerHTML += `<div style="color:red;">⚠️ Unknown response from server</div>`;
-      }
-
+      chat.innerHTML += `<div style="color:#00ff88;">🤖 ${response}</div>`;
       chat.scrollTop = chat.scrollHeight;
     } catch (err) {
-      chat.innerHTML += `<div style="color:red;">⚠️ Network error: ${err.message}</div>`;
+      chat.innerHTML += `<div style="color:red;">⚠️ AI error: ${err.message}</div>`;
     }
   });
 }
 
 // Attach handlers for both chat forms
-handleChat("learning-form", "learning-input", "learning-chat", "/api/learning_chat");
-handleChat("gaming-form", "gaming-input", "gaming-chat", "/api/gaming_chat");
+handleChat("learning-form", "learning-input", "learning-chat", "learning");
+handleChat("gaming-form", "gaming-input", "gaming-chat", "gaming");
