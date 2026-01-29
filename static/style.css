@@ -1,0 +1,109 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(180deg, #f0faff, #0a0a0f);
+  color: #fff;
+}
+
+/* Header */
+.header {
+  background: #0a0a0f;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #00f0ff;
+}
+.header h1 {
+  font-size: 32px;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+.header nav a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.header nav a:hover {
+  color: #00f0ff;
+}
+
+/* Landing Choices */
+.landing {
+  text-align: center;
+  padding: 60px 20px;
+}
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+.choice-card {
+  flex: 1;
+  max-width: 300px;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 20px #00f0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.choice-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px #00f0ff;
+}
+.neon-blue { background: #001f3f; box-shadow: 0 0 20px #00f0ff; }
+.neon-green { background: #003f1f; box-shadow: 0 0 20px #00ff88; }
+
+/* Chat */
+.chat-box {
+  background: #111;
+  border: 1px solid #00f0ff;
+  border-radius: 12px;
+  padding: 20px;
+  height: 400px;
+  overflow-y: auto;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 0 20px #00f0ff;
+}
+.chat-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+.chat-form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #222;
+  color: #fff;
+  box-shadow: 0 0 10px #00f0ff;
+}
+.chat-form button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #00f0ff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.chat-form button:hover {
+  background: #00aaff;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #0a0a0f;
+  box-shadow: 0 -2px 20px #00f0ff;
+}
