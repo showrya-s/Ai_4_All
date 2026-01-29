@@ -54,7 +54,7 @@
     {% endif %}
   </main>
 
-  <!-- Puter.js AI library (must load BEFORE style.js) -->
+  <!-- ✅ Puter.js must load BEFORE style.js -->
   <script src="https://js.puter.com/puter.js"></script>
 
   <!-- Your custom chat logic -->
@@ -63,7 +63,7 @@
   <!-- Quick test to confirm Puter.js loaded -->
   <script>
     if (typeof puter === "undefined") {
-      console.error("❌ Puter.js not loaded. Check script URL.");
+      console.error("❌ Puter.js not loaded. Check script URL or network.");
     } else {
       console.log("✅ Puter.js loaded successfully:", puter);
     }
