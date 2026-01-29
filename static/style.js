@@ -1,6 +1,4 @@
-// Puter.js integration for Learning & Gaming AI chats
-// Make sure you included <script src="https://js.puter.com/puter.js"></script> in base.html
-
+// Chat handler with Puter.js, Markdown, MathJax, and syntax highlighting
 async function handleChat(formId, inputId, chatId, aiMode) {
   const form = document.getElementById(formId);
   const input = document.getElementById(inputId);
@@ -18,15 +16,27 @@ async function handleChat(formId, inputId, chatId, aiMode) {
     input.value = "";
 
     try {
-      // Call Puter AI directly
       const response = await puter.ai.chat(msg, {
-        model: "gpt-4o-mini", // you can also try "gpt-4o" or "codex"
+        model: "gpt-4o-mini",
         systemPrompt: aiMode === "learning"
-          ? "You are an expert academic tutor and coding mentor. Explain formulas, solve homework step-by-step, and teach coding clearly."
-          : "You are a gaming coach AI. Explain strategies, walkthroughs, and tips in a fun, gamer-friendly way."
+          ? "You are an expert academic tutor and coding mentor. Use Markdown for clarity, LaTeX for math, and code blocks for programming."
+          : "You are a gaming coach AI. Use Markdown lists and code blocks for walkthroughs in a fun, gamer-friendly tone."
       });
 
-      chat.innerHTML += `<div style="color:#00ff88;">🤖 ${response}</div>`;
+      // Render AI reply as Markdown
+      const htmlReply = marked.parse(response);
+      chat.innerHTML += `<div style="color:#00ff88;">🤖 ${htmlReply}</div>`;
+
+      // Highlight code blocks
+      chat.querySelectorAll("pre code").forEach(block => {
+        hljs.highlightElement(block);
+      });
+
+      // Re-render MathJax for formulas
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+
       chat.scrollTop = chat.scrollHeight;
     } catch (err) {
       chat.innerHTML += `<div style="color:red;">⚠️ AI error: ${err.message}</div>`;
