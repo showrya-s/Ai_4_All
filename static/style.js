@@ -16,6 +16,11 @@ async function handleChat(formId, inputId, chatId, aiMode) {
     input.value = "";
 
     try {
+      if (typeof puter === "undefined") {
+        chat.innerHTML += `<div style="color:red;">⚠️ Puter.js not loaded. Check script order.</div>`;
+        return;
+      }
+
       const response = await puter.ai.chat(msg, {
         model: "gpt-4o-mini",
         systemPrompt: aiMode === "learning"
