@@ -1,109 +1,141 @@
-/* Base */
+/* Global theme */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(180deg, #f0faff, #0a0a0f);
-  color: #fff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: #0d0d0d;
+  color: #e0e0e0;
 }
 
 /* Header */
-.header {
-  background: #0a0a0f;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 20px #00f0ff;
+header {
+  background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #00f0ff;
 }
-.header h1 {
-  font-size: 32px;
+
+header h1 {
+  font-size: 1.8rem;
   color: #00f0ff;
   text-shadow: 0 0 10px #00f0ff;
 }
-.header nav a {
-  margin: 0 10px;
-  color: #fff;
+
+nav a {
+  margin-left: 1rem;
   text-decoration: none;
+  color: #e0e0e0;
   transition: color 0.3s;
 }
-.header nav a:hover {
-  color: #00f0ff;
+
+nav a:hover {
+  color: #00ff88;
 }
 
-/* Landing Choices */
-.landing {
-  text-align: center;
-  padding: 60px 20px;
-}
-.choices {
+/* Cards on home page */
+.cards {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
+  margin-top: 3rem;
+  gap: 2rem;
 }
-.choice-card {
-  flex: 1;
-  max-width: 300px;
-  padding: 30px;
+
+.card {
+  padding: 2rem;
   border-radius: 12px;
-  text-align: center;
+  background: #1a1a1a;
   color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
   text-decoration: none;
-  box-shadow: 0 0 20px #00f0ff;
+  width: 220px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.choice-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px #00f0ff;
-}
-.neon-blue { background: #001f3f; box-shadow: 0 0 20px #00f0ff; }
-.neon-green { background: #003f1f; box-shadow: 0 0 20px #00ff88; }
 
-/* Chat */
+.card.neon {
+  border: 2px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #00ff88;
+}
+
+/* Chat box */
 .chat-box {
   background: #111;
-  border: 1px solid #00f0ff;
-  border-radius: 12px;
-  padding: 20px;
+  border: 2px solid #00f0ff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 80%;
   height: 400px;
   overflow-y: auto;
-  margin: 20px auto;
-  max-width: 800px;
-  box-shadow: 0 0 20px #00f0ff;
+  box-shadow: inset 0 0 10px #00f0ff;
 }
+
+.chat-box div {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* Chat form */
 .chat-form {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px auto;
-  max-width: 800px;
+  margin: 1rem auto;
+  width: 80%;
 }
+
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 0.8rem;
   border: none;
+  border-radius: 8px 0 0 8px;
   outline: none;
+  font-size: 1rem;
   background: #222;
   color: #fff;
-  box-shadow: 0 0 10px #00f0ff;
 }
+
 .chat-form button {
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
   border: none;
+  border-radius: 0 8px 8px 0;
   background: #00f0ff;
   color: #000;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .chat-form button:hover {
-  background: #00aaff;
+  background: #00ff88;
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background: #0a0a0f;
-  box-shadow: 0 -2px 20px #00f0ff;
+/* Scrollbar styling */
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border-radius: 4px;
+}
+.chat-box::-webkit-scrollbar-track {
+  background: #222;
+}
+
+/* Markdown content inside chat */
+.chat-box pre {
+  background: #1a1a1a;
+  padding: 0.8rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.chat-box code {
+  font-family: 'Fira Code', monospace;
+  color: #00ff88;
 }
