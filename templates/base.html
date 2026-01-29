@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 4 ALL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Neon Theme Styles -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <h1>AI 4 ALL</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/learning">Learning & Coding AI</a>
+      <a href="/gaming">Gaming AI</a>
+    </nav>
+  </header>
+
+  <!-- ==================== LANDING PAGE ==================== -->
+  {% if page == "home" %}
+  <section class="landing">
+    <h2>Choose Your Path</h2>
+    <div class="choices">
+      <a href="/learning" class="choice-card neon-blue">
+        <h3>🎓 Learning & Coding AI</h3>
+        <p>Homework help, formulas, coding tutorials, and more.</p>
+      </a>
+      <a href="/gaming" class="choice-card neon-green">
+        <h3>🎮 Gaming AI</h3>
+        <p>Strategies, walkthroughs, and AI coaching for games.</p>
+      </a>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ==================== LEARNING AI PAGE ==================== -->
+  {% if page == "learning" %}
+  <section class="learning">
+    <h2>Learning & Coding AI</h2>
+    <div class="chat-box" id="learning-chat"></div>
+    <form id="learning-form" class="chat-form">
+      <input type="text" id="learning-input" placeholder="Ask about formulas, homework, or code..." required>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+  {% endif %}
+
+  <!-- ==================== GAMING AI PAGE ==================== -->
+  {% if page == "gaming" %}
+  <section class="gaming">
+    <h2>Gaming AI</h2>
+    <div class="chat-box" id="gaming-chat"></div>
+    <form id="gaming-form" class="chat-form">
+      <input type="text" id="gaming-input" placeholder="Ask about game strategies or tips..." required>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+  {% endif %}
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    &copy; 2026 AI 4 ALL. All rights reserved.
+  </footer>
+
+  <script src="/static/style.js"></script>
+</body>
+</html>
